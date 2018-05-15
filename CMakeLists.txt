@@ -265,6 +265,9 @@ else()
     # For MSVC builds, this puts all debug symbols file in the same directory.
     set(CMAKE_PDB_OUTPUT_DIRECTORY "${REACTOS_BINARY_DIR}/msvc_pdb")
 
+    include(sdk/cmake/cabman.cmake)
+    add_subdirectory(dist)
+
     #begin with boot so reactos_cab target is defined before all other modules
     add_subdirectory(boot)
     add_subdirectory(base)
