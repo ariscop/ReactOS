@@ -40,7 +40,8 @@ function(add_cabinet _target _dff)
     add_custom_command(
         OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_target}.cab ${CMAKE_CURRENT_BINARY_DIR}/${_target}.inf
         COMMAND native-cabman -C ${CMAKE_CURRENT_BINARY_DIR}/${_target}.dff -L ${CMAKE_CURRENT_BINARY_DIR} -P ${REACTOS_SOURCE_DIR}
-        DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${_target}.dff native-cabman)
+        DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${_target}.dff native-cabman
+        DEPENDS "$<TARGET_PROPERTY:${_target}_cabman,_cab_file_depends>")
 
     _cabman_parse_dff(${_target}_cabman ${_dff})
 endfunction()
@@ -58,6 +59,8 @@ function(add_cab_file _target)
 
     get_property(_dyn_dff_file TARGET ${_target}_cabman PROPERTY _dyn_dff_file)
 
+    string(REPLACE "/" "\\" _CAB_DESTINATION "${_CAB_DESTINATION}")
+
     _cabman_path_to_num(${_target} "${_CAB_DESTINATION}" _num)
     if(${_num} EQUAL -1)
         message(FATAL_ERROR "Destination ${_CAB_DESTINATION} not defined in directive file")
@@ -71,12 +74,14 @@ function(add_cab_file _target)
 
     foreach(_cab_target ${_CAB_TARGET})
         file(APPEND ${_dyn_dff_file}.cmake "$<TARGET_FILE:${_cab_target}> ${_num}${_optional}\n")
-        add_dependencies(${_target}_cabman ${_cab_target})
+        set_property(TARGET ${_target}_cabman APPEND PROPERTY _cab_file_depends ${_cab_target})
     endforeach()
 
     foreach(_file ${_CAB_FILE})
         file(APPEND ${_dyn_dff_file}.cmake "${_file} ${_num}${_optional}\n")
-        #TODO: File-level dependencies
+        if(NOT _CAB_OPTIONAL)
+            set_property(TARGET ${_target}_cabman APPEND PROPERTY _cab_file_depends ${_file})
+        endif()
     endforeach()
 endfunction()
 
