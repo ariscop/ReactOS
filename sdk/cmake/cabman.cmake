@@ -16,7 +16,6 @@ function(add_cabinet _target _dff)
 
     set(_dyn_dff_file ${CMAKE_CURRENT_BINARY_DIR}/reactos.dff.dyn)
 
-    set_property(GLOBAL APPEND PROPERTY CABMAN_TARGETS ${_target})
     set_property(TARGET ${_target}_cabman PROPERTY _dyn_dff_file ${_dyn_dff_file})
 
     # hack: make dff file changes re-run cmake by configuring it
