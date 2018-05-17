@@ -1,7 +1,15 @@
 
 
 function(add_cabinet _target _dff)
-    add_custom_target(${_target}_cabman
+    cmake_parse_arguments(_CAB "EXCLUDE_FROM_ALL" "" "" ${ARGN})
+
+    if(NOT _CAB_EXCLUDE_FROM_ALL)
+        set(_all "ALL")
+    else()
+        set(_all)
+    endif()
+
+    add_custom_target(${_target}_cabman ${_all}
         SOURCES ${_dff}
         DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${_target}.cab
         DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${_target}.inf)
