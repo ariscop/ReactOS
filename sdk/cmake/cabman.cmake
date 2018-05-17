@@ -14,7 +14,7 @@ function(add_cabinet _target _dff)
         DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${_target}.cab
         DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${_target}.inf)
 
-    set(_dyn_dff_file ${CMAKE_CURRENT_BINARY_DIR}/reactos.dff.dyn)
+    set(_dyn_dff_file ${CMAKE_CURRENT_BINARY_DIR}/${_target}.dff.dyn)
 
     set_property(TARGET ${_target}_cabman PROPERTY _dyn_dff_file ${_dyn_dff_file})
 
@@ -28,7 +28,7 @@ function(add_cabinet _target _dff)
     file(WRITE ${_dyn_dff_file}.cmake "")
 
     add_custom_command(
-        OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/reactos.dff
+        OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_target}.dff
         COMMAND ${CMAKE_COMMAND} -D SRC1=${_dff}
                                  -D SRC2=${_dyn_dff_file}
                                  -D DST=${CMAKE_CURRENT_BINARY_DIR}/${_target}.dff
