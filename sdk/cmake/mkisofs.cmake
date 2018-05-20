@@ -2,7 +2,7 @@
 function(add_iso _target)
     cmake_parse_arguments(_ISO "EXCLUDE_FROM_ALL" "ROOT" "" ${ARGN})
 
-    if(NOT _CAB_EXCLUDE_FROM_ALL)
+    if(NOT _ISO_EXCLUDE_FROM_ALL)
         set(_all "ALL")
     else()
         set(_all)
