@@ -446,11 +446,11 @@ function(create_iso_lists)
     add_custom_target(reactos_cab DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/reactos.cab)
     add_dependencies(reactos_cab reactos_cab_inf)
 
-    add_cd_file(
-        TARGET reactos_cab
-        FILE ${CMAKE_CURRENT_BINARY_DIR}/reactos.cab
-        DESTINATION reactos
-        NO_CAB FOR bootcd regtest)
+    #add_cd_file(
+    #    TARGET reactos_cab
+    #    FILE ${CMAKE_CURRENT_BINARY_DIR}/reactos.cab
+    #    DESTINATION reactos
+    #    NO_CAB FOR bootcd regtest)
 
     add_cd_file(
         FILE ${CMAKE_CURRENT_BINARY_DIR}/livecd.iso
@@ -876,7 +876,7 @@ function(add_rostests_file)
     endif()
 
     if(_ROSTESTS_TARGET)
-        add_cd_file(TARGET ${_ROSTESTS_TARGET} FILE ${_ROSTESTS_FILE} DESTINATION "reactos/bin${_ROSTESTS_SUBDIR}" NAME_ON_CD ${_ROSTESTS_NAME_ON_CD} FOR all)
+        add_cd_file(TARGET ${_ROSTESTS_TARGET} DESTINATION "reactos/bin${_ROSTESTS_SUBDIR}" NAME_ON_CD ${_ROSTESTS_NAME_ON_CD} FOR all)
     else()
         add_cd_file(FILE ${_ROSTESTS_FILE} DESTINATION "reactos/bin${_ROSTESTS_SUBDIR}" NAME_ON_CD ${_ROSTESTS_NAME_ON_CD} FOR all)
     endif()
