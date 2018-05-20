@@ -58,8 +58,6 @@ function(add_cab_file _target)
 
     get_property(_dyn_dff_file TARGET ${_target}_cabman PROPERTY _dyn_dff_file)
 
-    string(REPLACE "/" "\\" _CAB_DESTINATION "${_CAB_DESTINATION}")
-
     _cabman_path_to_num(${_target} "${_CAB_DESTINATION}" _num)
     if(${_num} EQUAL -1)
         message(FATAL_ERROR "Destination ${_CAB_DESTINATION} not defined in directive file")
@@ -72,12 +70,12 @@ function(add_cab_file _target)
     endif()
 
     foreach(_cab_target ${_CAB_TARGET})
-        file(APPEND ${_dyn_dff_file}.cmake "$<TARGET_FILE:${_cab_target}> ${_num}${_optional}\n")
+        file(APPEND ${_dyn_dff_file}.cmake "\"$<TARGET_FILE:${_cab_target}>\" ${_num}${_optional}\n")
         set_property(TARGET ${_target}_cabman APPEND PROPERTY _cab_file_depends ${_cab_target})
     endforeach()
 
     foreach(_file ${_CAB_FILE})
-        file(APPEND ${_dyn_dff_file}.cmake "${_file} ${_num}${_optional}\n")
+        file(APPEND ${_dyn_dff_file}.cmake "\"${_file}\" ${_num}${_optional}\n")
         if(NOT _CAB_OPTIONAL)
             set_property(TARGET ${_target}_cabman APPEND PROPERTY _cab_file_depends ${_file})
         endif()
@@ -114,7 +112,8 @@ function(_cabman_parse_dff _target _dff)
         elseif(section STREQUAL Directories
                AND "${line}" MATCHES "^([0-9]+) += +\"?([^\"]+)\"?")
             # Capture directory->number mappings
-            set_property(TARGET ${_target} APPEND PROPERTY _inf_directories ${CMAKE_MATCH_2})
+            string(REPLACE "\\" "/" _dir "${CMAKE_MATCH_2}")
+            set_property(TARGET ${_target} APPEND PROPERTY _inf_directories ${_dir})
             set_property(TARGET ${_target} APPEND PROPERTY _inf_directories_num ${CMAKE_MATCH_1})
         endif()
     endforeach()
