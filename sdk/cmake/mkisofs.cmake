@@ -18,7 +18,7 @@ function(add_iso _target)
     add_custom_target(${_target}_iso ${_all}
         DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${_target}.iso)
 
-    set(_filelist ${CMAKE_CURRENT_BINARY_DIR}/${_target}.lst)
+    set(_filelist ${CMAKE_CURRENT_BINARY_DIR}/${_target})
     set_target_properties(${_target}_iso PROPERTIES
             _filelist ${_filelist}
             _empty ${_empty}
@@ -29,7 +29,7 @@ function(add_iso _target)
 
     file(WRITE "${_filelist}.cmake" "$<TARGET_PROPERTY:${_target}_iso,_root>\n")
     file(GENERATE
-         OUTPUT ${_filelist}
+         OUTPUT ${_filelist}.$<CONFIG>.lst
          INPUT  ${_filelist}.cmake)
 
     set(_tgt "TARGET_PROPERTY:${_target}_iso")
@@ -41,9 +41,9 @@ function(add_iso _target)
             -publisher "$<${_tgt},ISO_MANUFACTURER>" -preparer "$<${_tgt},ISO_MANUFACTURER>"
             -volid "$<${_tgt},ISO_VOLNAME>" -volset "$<${_tgt},ISO_VOLSET>"
             -eltorito-boot loader/isoboot.bin -no-emul-boot -boot-load-size 4 -eltorito-alt-boot -eltorito-platform efi -eltorito-boot loader/efisys.bin -no-emul-boot -hide boot.catalog
-            -no-cache-inodes -graft-points -path-list ${_filelist}
+            -no-cache-inodes -graft-points -path-list ${_filelist}.$<CONFIG>.lst
         COMMAND native-isohybrid -b ${CMAKE_BINARY_DIR}/boot/freeldr/bootsect/isombr.bin -t 0x96 ${CMAKE_CURRENT_BINARY_DIR}/${_target}.iso
-        DEPENDS isombr native-isohybrid native-mkisofs ${_filelist}
+        DEPENDS isombr native-isohybrid native-mkisofs ${_filelist}.$<CONFIG>.lst
         DEPENDS ${CMAKE_BINARY_DIR}/boot/freeldr/bootsect/isombr.bin
         DEPENDS "$<TARGET_PROPERTY:${_target}_iso,_iso_depends>"
         VERBATIM)

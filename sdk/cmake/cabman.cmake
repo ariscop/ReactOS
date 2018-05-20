@@ -14,33 +14,28 @@ function(add_cabinet _target _dff)
         DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${_target}.cab
         DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${_target}.inf)
 
-    set(_dyn_dff_file ${CMAKE_CURRENT_BINARY_DIR}/${_target}.dff.dyn)
+    set(_dff_file ${CMAKE_CURRENT_BINARY_DIR}/${_target})
 
-    set_property(TARGET ${_target}_cabman PROPERTY _dyn_dff_file ${_dyn_dff_file})
+    set_property(TARGET ${_target}_cabman PROPERTY _dff_file ${_dff_file})
 
     # hack: make dff file changes re-run cmake by configuring it
     #configure_file(${_dff} ${CMAKE_CURRENT_BINARY_DIR}/.${_target}.dummy)
 
     file(GENERATE
-         OUTPUT ${_dyn_dff_file}
-         INPUT  ${_dyn_dff_file}.cmake)
+         OUTPUT ${_dff_file}.$<CONFIG>.dyn
+         INPUT  ${_dff_file}.dff.cmake)
 
-    file(WRITE ${_dyn_dff_file}.cmake "")
-
-    add_custom_command(
-        OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_target}.dff
-        COMMAND ${CMAKE_COMMAND} -D SRC1=${_dff}
-                                 -D SRC2=${_dyn_dff_file}
-                                 -D DST=${CMAKE_CURRENT_BINARY_DIR}/${_target}.dff
-                                 -P ${REACTOS_SOURCE_DIR}/sdk/tools/concat.cmake
-        DEPENDS ${_dff}
-        DEPENDS ${_dyn_dff_file})
+    file(WRITE ${_dff_file}.dff.cmake "")
 
     add_custom_command(
         OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_target}.cab ${CMAKE_CURRENT_BINARY_DIR}/${_target}.inf
-        COMMAND native-cabman -C ${CMAKE_CURRENT_BINARY_DIR}/${_target}.dff -I -P ${REACTOS_SOURCE_DIR}
-        COMMAND native-cabman -C ${CMAKE_CURRENT_BINARY_DIR}/${_target}.dff -N -P ${REACTOS_SOURCE_DIR} -RC ${CMAKE_CURRENT_BINARY_DIR}/${_target}.inf
-        DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${_target}.dff native-cabman
+        COMMAND ${CMAKE_COMMAND} -D SRC1=${_dff}
+                                 -D SRC2=${_dff_file}.$<CONFIG>.dyn
+                                 -D DST=${CMAKE_CURRENT_BINARY_DIR}/${_target}.$<CONFIG>.dff
+                                 -P ${REACTOS_SOURCE_DIR}/sdk/tools/concat.cmake
+        COMMAND native-cabman -C ${CMAKE_CURRENT_BINARY_DIR}/${_target}.$<CONFIG>.dff -I -P ${REACTOS_SOURCE_DIR}
+        COMMAND native-cabman -C ${CMAKE_CURRENT_BINARY_DIR}/${_target}.$<CONFIG>.dff -N -P ${REACTOS_SOURCE_DIR} -RC ${CMAKE_CURRENT_BINARY_DIR}/${_target}.inf
+        DEPENDS native-cabman ${_dff} ${_dff_file}.$<CONFIG>.dyn
         DEPENDS "$<TARGET_PROPERTY:${_target}_cabman,_cab_file_depends>")
 
     _cabman_parse_dff(${_target}_cabman ${_dff})
@@ -57,7 +52,7 @@ function(add_cab_file _target)
         message(FATAL_ERROR "You must provide a destination")
     endif()
 
-    get_property(_dyn_dff_file TARGET ${_target}_cabman PROPERTY _dyn_dff_file)
+    get_property(_dff_file TARGET ${_target}_cabman PROPERTY _dff_file)
 
     _cabman_path_to_num(${_target} "${_CAB_DESTINATION}" _num)
     if(${_num} EQUAL -1)
@@ -71,12 +66,12 @@ function(add_cab_file _target)
     endif()
 
     foreach(_cab_target ${_CAB_TARGET})
-        file(APPEND ${_dyn_dff_file}.cmake "\"$<TARGET_FILE:${_cab_target}>\" ${_num}${_optional}\n")
+        file(APPEND ${_dff_file}.dff.cmake "\"$<TARGET_FILE:${_cab_target}>\" ${_num}${_optional}\n")
         set_property(TARGET ${_target}_cabman APPEND PROPERTY _cab_file_depends ${_cab_target})
     endforeach()
 
     foreach(_file ${_CAB_FILE})
-        file(APPEND ${_dyn_dff_file}.cmake "\"${_file}\" ${_num}${_optional}\n")
+        file(APPEND ${_dff_file}.dff.cmake "\"${_file}\" ${_num}${_optional}\n")
         if(NOT _CAB_OPTIONAL)
             set_property(TARGET ${_target}_cabman APPEND PROPERTY _cab_file_depends ${_file})
         endif()
