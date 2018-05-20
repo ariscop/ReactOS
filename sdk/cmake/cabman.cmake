@@ -38,7 +38,8 @@ function(add_cabinet _target _dff)
 
     add_custom_command(
         OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${_target}.cab ${CMAKE_CURRENT_BINARY_DIR}/${_target}.inf
-        COMMAND native-cabman -C ${CMAKE_CURRENT_BINARY_DIR}/${_target}.dff -L ${CMAKE_CURRENT_BINARY_DIR} -P ${REACTOS_SOURCE_DIR}
+        COMMAND native-cabman -C ${CMAKE_CURRENT_BINARY_DIR}/${_target}.dff -I -P ${REACTOS_SOURCE_DIR}
+        COMMAND native-cabman -C ${CMAKE_CURRENT_BINARY_DIR}/${_target}.dff -N -P ${REACTOS_SOURCE_DIR} -RC ${CMAKE_CURRENT_BINARY_DIR}/${_target}.inf
         DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${_target}.dff native-cabman
         DEPENDS "$<TARGET_PROPERTY:${_target}_cabman,_cab_file_depends>")
 
