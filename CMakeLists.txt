@@ -266,6 +266,7 @@ else()
     set(CMAKE_PDB_OUTPUT_DIRECTORY "${REACTOS_BINARY_DIR}/msvc_pdb")
 
     include(sdk/cmake/cabman.cmake)
+    include(sdk/cmake/mkisofs.cmake)
     add_subdirectory(dist)
 
     #begin with boot so reactos_cab target is defined before all other modules
