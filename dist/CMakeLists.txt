@@ -1,10 +1,10 @@
 
 add_cabinet(reactos ${REACTOS_SOURCE_DIR}/boot/bootdata/packages/reactos.dff.in)
 
-add_iso(bootcd)
-#add_iso(livecd EXCLUDE_FROM_ALL)
-#add_iso(hybridcd EXCLUDE_FROM_ALL)
-#add_iso(regtest EXCLUDE_FROM_ALL)
+add_iso(bootcd EXCLUDE_FROM_ALL)
+add_iso(livecd EXCLUDE_FROM_ALL)
+add_iso(hybridcd EXCLUDE_FROM_ALL)
+add_iso(regtest EXCLUDE_FROM_ALL)
 
 function(_add_empty_folders _target _prefix)
     # Create the empty Desktop, Favorites, and Start Menu folders. And many more.
@@ -37,16 +37,31 @@ function(_add_empty_folders _target _prefix)
     add_iso_folder(${_target} "${_prefix}Profiles/Default User/Templates")
 endfunction()
 
-#_add_empty_folders(livecd "")
-#_add_empty_folders(hybridcd "livecd/")
+_add_empty_folders(livecd "")
+_add_empty_folders(hybridcd "livecd/")
 
 add_iso_file(bootcd FILE ${CMAKE_CURRENT_BINARY_DIR}/reactos.inf DESTINATION reactos)
 add_iso_file(bootcd FILE ${CMAKE_CURRENT_BINARY_DIR}/reactos.cab DESTINATION reactos)
 
+function(_int_add_cd_file _target)
+    cmake_parse_arguments(_CD "NO_CAB;NOT_IN_HYBRIDCD" "DESTINATION;NAME_ON_CD;TARGET;FILE" "" ${ARGN})
+    if(_CD_FILE)
+        set(_dest ${_CD_DESTINATION})
+        if(_dest STREQUAL "root")
+            set(_dest "")
+        endif()
+        add_iso_file(${_target} FILE ${_CD_FILE} DESTINATION ${_dest} NAME "${_CD_NAME_ON_CD}")
+        if(_CD_TARGET)
+            set_property(TARGET ${_target}_iso APPEND PROPERTY _iso_depends ${_CD_TARGET})
+        endif()
+    else()
+        add_iso_file(${_target} TARGET ${_CD_TARGET} DESTINATION ${_CD_DESTINATION} NAME "${_CD_NAME_ON_CD}")
+    endif()
+endfunction()
+
 function(add_cd_file)
     _add_cd_file(${ARGN})
     cmake_parse_arguments(_CD "NO_CAB;NOT_IN_HYBRIDCD" "DESTINATION;NAME_ON_CD;TARGET;FILE" "FOR" ${ARGN})
-    #message(STATUS "${ARGN}")
 
     # do we add it to all CDs?
     list(FIND _CD_FOR all __cd)
@@ -60,18 +75,7 @@ function(add_cd_file)
     if(NOT __cd EQUAL -1)
         # whether or not we should put it in reactos.cab or directly on cd
         if(_CD_NO_CAB)
-            if(_CD_FILE)
-                set(_dest ${_CD_DESTINATION})
-                if(_dest STREQUAL "root")
-                    set(_dest "")
-                endif()
-                add_iso_file(bootcd FILE ${_CD_FILE} DESTINATION ${_dest} NAME "${_CD_NAME_ON_CD}")
-                if(_CD_TARGET)
-                    set_property(TARGET bootcd_iso APPEND PROPERTY _iso_depends ${_CD_TARGET})
-                endif()
-            else()
-                add_iso_file(bootcd TARGET ${_CD_TARGET} DESTINATION ${_CD_DESTINATION} NAME "${_CD_NAME_ON_CD}")
-            endif()
+            _int_add_cd_file(bootcd ${ARGN})
         else()
             string(REGEX REPLACE "^reactos/?" "" _dest ${_CD_DESTINATION})
             if(_dest STREQUAL "root" OR _dest STREQUAL "")
@@ -88,4 +92,28 @@ function(add_cd_file)
             endif()
         endif()
     endif() #end bootcd
+
+    # do we add it to livecd?
+    list(FIND _CD_FOR livecd __cd)
+    if(NOT __cd EQUAL -1)
+        _int_add_cd_file(livecd ${ARGN})
+
+        # add it also into the hybridcd if not specified otherwise
+        if(NOT _CD_NOT_IN_HYBRIDCD)
+            _int_add_cd_file(hybridcd ${ARGN})
+        endif()
+    endif() #end livecd
+
+    # do we need also to add it to hybridcd?
+    list(FIND _CD_FOR hybridcd __cd)
+    if(NOT __cd EQUAL -1)
+        _int_add_cd_file(hybridcd ${ARGN})
+    endif() #end hybridcd
+
+    # do we add it to regtest?
+    list(FIND _CD_FOR regtest __cd)
+    if(NOT __cd EQUAL -1)
+        _int_add_cd_file(regtest ${ARGN})
+    endif() #end regtest
+
 endfunction()

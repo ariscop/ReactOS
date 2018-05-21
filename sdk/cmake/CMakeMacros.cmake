@@ -452,10 +452,10 @@ function(create_iso_lists)
     #    DESTINATION reactos
     #    NO_CAB FOR bootcd regtest)
 
-    add_cd_file(
-        FILE ${CMAKE_CURRENT_BINARY_DIR}/livecd.iso
-        DESTINATION livecd
-        FOR hybridcd)
+    #add_cd_file(
+    #    FILE ${CMAKE_CURRENT_BINARY_DIR}/livecd.iso
+    #    DESTINATION livecd
+    #    FOR hybridcd)
 
     get_property(_filelist GLOBAL PROPERTY BOOTCD_FILE_LIST)
     string(REPLACE ";" "\n" _filelist "${_filelist}")
