@@ -50,6 +50,7 @@ endif()
 string(TOLOWER ${ARCH} ARCH)
 
 # Compile options
+include(sdk/cmake/config.cmake)
 include(sdk/cmake/config-${ARCH}.cmake)
 
 # Compiler flags handling
