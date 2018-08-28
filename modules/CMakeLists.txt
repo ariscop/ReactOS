@@ -1,3 +1,14 @@
+set(ENABLE_ROSTESTS FALSE CACHE BOOL
+"Whether to compile the rostests module")
+
+set(ENABLE_ROSAPPS FALSE CACHE BOOL
+"Whether to compile the rosapps module")
+
+set(ENABLE_WALLPAPERS FALSE CACHE BOOL
+"Whether to compile the wallpapers module")
+
+set(ENABLE_AHK_TESTS FALSE CACHE BOOL
+"Whether to compile the AHK_Tests module")
 
 if(ENABLE_ROSAPPS)
     add_subdirectory(rosapps)
@@ -11,7 +22,7 @@ if(ENABLE_WALLPAPERS)
     add_subdirectory(wallpapers)
 endif()
 
-if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/AHK_Tests/)
+if(ENABLE_AHK_TESTS)
     add_subdirectory(AHK_Tests)
 endif()
 
