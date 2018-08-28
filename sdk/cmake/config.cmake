@@ -1,4 +1,15 @@
 
+set(OPTIMIZE "4" CACHE STRING
+"What level of optimization to use.
+ 0 = Off
+ 1 = Optimize for size (-Os) with some additional options
+ 2 = Optimize for size (-Os)
+ 3 = Optimize debugging experience (-Og)
+ 4 = Optimize (-O1)
+ 5 = Optimize even more (-O2)
+ 6 = Optimize yet more (-O3)
+ 7 = Disregard strict standards compliance (-Ofast)")
+
 set(LTCG FALSE CACHE BOOL
 "Whether to build with link-time code generation")
 

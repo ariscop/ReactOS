@@ -10,17 +10,6 @@ set(OARCH "pentium" CACHE STRING
 set(TUNE "i686" CACHE STRING
 "Which CPU ReactOS should be optimized for.")
 
-set(OPTIMIZE "4" CACHE STRING
-"What level of optimization to use.
- 0 = Off
- 1 = Optimize for size (-Os) with some additional options
- 2 = Optimize for size (-Os)
- 3 = Optimize debugging experience (-Og)
- 4 = Optimize (-O1)
- 5 = Optimize even more (-O2)
- 6 = Optimize yet more (-O3)
- 7 = Disregard strict standards compliance (-Ofast)")
-
 if(MSVC AND (NOT USE_CLANG_CL))
     set(KDBG FALSE CACHE BOOL
 "Whether to compile in the integrated kernel debugger.")
