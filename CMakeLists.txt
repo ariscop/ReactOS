@@ -49,6 +49,14 @@ endif()
 # for more information.
 string(TOLOWER ${ARCH} ARCH)
 
+# On multi-config generators CMAKE_BUILD_TYPE wont be defined, so define
+# it and CMAKE_CONFIGURATION_TYPES for a single configuration until
+# the build system can cope with multi-config generatorss
+if(NOT DEFINED CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE "Debug" CACHE STRING "")
+endif()
+set(CMAKE_CONFIGURATION_TYPES "${CMAKE_BUILD_TYPE}" CACHE INTERNAL "")
+
 # Compile options
 include(sdk/cmake/config.cmake)
 include(sdk/cmake/config-${ARCH}.cmake)
@@ -114,7 +122,7 @@ else()
     endif()
 
     # Print build type
-    message("-- Build Type: ${CMAKE_BUILD_TYPE}")
+    message(STATUS "Build Type: ${CMAKE_BUILD_TYPE}")
 
     # adjust the default behaviour of the FIND_XXX() commands:
     # search headers and libraries in the target environment, search

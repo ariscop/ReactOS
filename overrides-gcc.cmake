@@ -1,3 +1,4 @@
+set(CMAKE_BUILD_TYPE_INIT "Debug")
 foreach(lang C CXX ASM)
   set(CMAKE_${lang}_FLAGS_DEBUG "")
   set(CMAKE_${lang}_FLAGS_MINSIZEREL "-Os -DNDEBUG")
