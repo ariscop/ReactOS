@@ -43,4 +43,4 @@ list(APPEND SOURCE
 
 add_library(libmpg123 ${SOURCE} optimize.c)
 add_dependencies(libmpg123 psdk)
-add_pch(libmpg123 precomp.h SOURCE)
+add_pch(libmpg123 precomp.h)

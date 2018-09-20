@@ -9,5 +9,5 @@ list(APPEND SOURCE
 add_executable(fsutil ${SOURCE} fsutil.rc)
 set_module_type(fsutil win32cui UNICODE)
 add_importlibs(fsutil msvcrt kernel32 ntdll)
-add_pch(fsutil fsutil.h SOURCE)
+add_pch(fsutil fsutil.h)
 add_cd_file(TARGET fsutil DESTINATION reactos/system32 FOR all)

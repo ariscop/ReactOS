@@ -12,5 +12,5 @@ list(APPEND SOURCE
     Mke2fs.h)
 
 add_library(ext2lib ${SOURCE})
-add_pch(ext2lib Mke2fs.h SOURCE)
+add_pch(ext2lib Mke2fs.h)
 add_dependencies(ext2lib psdk)

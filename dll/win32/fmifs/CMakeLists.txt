@@ -20,6 +20,6 @@ add_library(fmifs SHARED
 
 set_module_type(fmifs win32dll UNICODE ENTRYPOINT InitializeFmIfs 12)
 add_importlibs(fmifs kernel32 ntdll)
-add_pch(fmifs precomp.h SOURCE)
+add_pch(fmifs precomp.h)
 add_dependencies(fmifs psdk)
 add_cd_file(TARGET fmifs DESTINATION reactos/system32 FOR all)

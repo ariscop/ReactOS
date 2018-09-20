@@ -27,5 +27,5 @@ add_library(dhcpcsvc SHARED
 
 set_module_type(dhcpcsvc win32dll)
 add_importlibs(dhcpcsvc ws2_32 iphlpapi advapi32 msvcrt kernel32 ntdll)
-add_pch(dhcpcsvc include/rosdhcp.h SOURCE)
+add_pch(dhcpcsvc include/rosdhcp.h)
 add_cd_file(TARGET dhcpcsvc DESTINATION reactos/system32 FOR all)

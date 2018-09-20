@@ -16,5 +16,5 @@ add_library(deskmon SHARED
 set_module_type(deskmon win32dll UNICODE)
 target_link_libraries(deskmon uuid)
 add_importlibs(deskmon user32 gdi32 comctl32 ole32 msvcrt kernel32 ntdll)
-add_pch(deskmon precomp.h SOURCE)
+add_pch(deskmon precomp.h)
 add_cd_file(TARGET deskmon DESTINATION reactos/system32 FOR all)

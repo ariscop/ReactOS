@@ -21,5 +21,5 @@ add_library(timedate SHARED
 
 set_module_type(timedate cpl UNICODE)
 add_importlibs(timedate advapi32 user32 gdi32 comctl32 ws2_32 iphlpapi msvcrt kernel32)
-add_pch(timedate timedate.h SOURCE)
+add_pch(timedate timedate.h)
 add_cd_file(TARGET timedate DESTINATION reactos/system32 FOR all)

@@ -51,5 +51,5 @@ if(MSVC)
     add_importlibs(comctl32_winetest ntdll)
 endif()
 
-add_pch(comctl32_winetest precomp.h SOURCE)
+add_pch(comctl32_winetest precomp.h)
 add_rostests_file(TARGET comctl32_winetest)

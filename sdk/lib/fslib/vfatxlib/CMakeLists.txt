@@ -5,7 +5,7 @@ list(APPEND SOURCE
     vfatxlib.h)
 
 add_library(vfatxlib ${SOURCE})
-add_pch(vfatxlib vfatxlib.h SOURCE)
+add_pch(vfatxlib vfatxlib.h)
 target_link_libraries(vfatxlib chkstk)
 
 if(NOT MSVC)

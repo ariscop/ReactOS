@@ -30,5 +30,5 @@ if(MSVC)
     add_importlibs(gdi32_winetest ntdll)
 endif()
 
-add_pch(gdi32_winetest precomp.h SOURCE)
+add_pch(gdi32_winetest precomp.h)
 add_rostests_file(TARGET gdi32_winetest)

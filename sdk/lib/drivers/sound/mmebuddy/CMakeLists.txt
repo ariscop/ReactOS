@@ -27,5 +27,5 @@ list(APPEND SOURCE
     precomp.h)
 
 add_library(mmebuddy ${SOURCE})
-add_pch(mmebuddy precomp.h SOURCE)
+add_pch(mmebuddy precomp.h)
 add_dependencies(mmebuddy psdk)

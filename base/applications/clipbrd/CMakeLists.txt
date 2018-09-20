@@ -8,7 +8,7 @@ list(APPEND SOURCE
     precomp.h)
 
 add_executable(clipbrd ${SOURCE} clipbrd.rc)
-add_pch(clipbrd precomp.h SOURCE)
+add_pch(clipbrd precomp.h)
 set_module_type(clipbrd win32gui UNICODE)
 add_importlibs(clipbrd hhctrl user32 gdi32 comdlg32 shell32 msvcrt kernel32)
 add_cd_file(TARGET clipbrd DESTINATION reactos/system32 FOR all)

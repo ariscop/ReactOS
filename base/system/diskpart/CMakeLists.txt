@@ -52,5 +52,5 @@ if(MSVC)
     add_importlibs(diskpart ntdll)
 endif()
 
-add_pch(diskpart diskpart.h SOURCE)
+add_pch(diskpart diskpart.h)
 add_cd_file(TARGET diskpart DESTINATION reactos/system32 FOR all)

@@ -11,6 +11,6 @@ add_library(parport SHARED
     parport.rc)
 
 set_module_type(parport kernelmodedriver)
-add_pch(parport parport.h SOURCE)
+add_pch(parport parport.h)
 add_importlibs(parport ntoskrnl hal)
 add_cd_file(TARGET parport DESTINATION reactos/system32/drivers FOR all)

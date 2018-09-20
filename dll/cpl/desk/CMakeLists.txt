@@ -37,5 +37,5 @@ add_library(desk SHARED
 set_module_type(desk cpl UNICODE)
 target_link_libraries(desk uuid)
 add_importlibs(desk user32 advapi32 advapi32_vista gdi32 comctl32 comdlg32 ole32 setupapi shell32 shlwapi uxtheme gdiplus msvcrt kernel32 ntdll)
-add_pch(desk desk.h SOURCE)
+add_pch(desk desk.h)
 add_cd_file(TARGET desk DESTINATION reactos/system32 FOR all)

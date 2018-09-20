@@ -18,5 +18,5 @@ add_library(localmon SHARED
 set_module_type(localmon win32dll UNICODE)
 target_link_libraries(localmon wine)
 add_importlibs(localmon advapi32 spoolss user32 msvcrt kernel32 ntdll)
-add_pch(localmon precomp.h SOURCE)
+add_pch(localmon precomp.h)
 add_cd_file(TARGET localmon DESTINATION reactos/system32 FOR all)

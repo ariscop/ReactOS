@@ -22,5 +22,5 @@ add_library(usbccgp SHARED
 target_link_libraries(usbccgp ${PSEH_LIB})
 set_module_type(usbccgp kernelmodedriver)
 add_importlibs(usbccgp ntoskrnl hal usbd)
-add_pch(usbccgp usbccgp.h SOURCE)
+add_pch(usbccgp usbccgp.h)
 add_cd_file(TARGET usbccgp DESTINATION reactos/system32/drivers NO_CAB FOR all)

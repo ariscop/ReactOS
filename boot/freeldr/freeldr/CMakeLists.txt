@@ -190,13 +190,7 @@ if(USE_CLANG_CL)
     add_target_compile_flags(freeldr_common "/Os")
 endif()
 
-set(PCH_SOURCE
-    ${FREELDR_BOOTLIB_COMMON_SOURCE}
-    ${FREELDR_ARC_COMMON_SOURCE}
-    ${FREELDR_NTLDR_COMMON_SOURCE}
-    ${FREELDR_COMMON_SOURCE})
-
-add_pch(freeldr_common include/freeldr.h PCH_SOURCE)
+add_pch(freeldr_common include/freeldr.h)
 add_dependencies(freeldr_common bugcodes asm xdk)
 
 if(ARCH STREQUAL "i386" AND NOT MSVC)

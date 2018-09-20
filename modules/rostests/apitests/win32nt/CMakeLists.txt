@@ -81,5 +81,5 @@ add_importlibs(win32knt_apitest
     ntdll)
 
 add_dependencies(win32knt_apitest xdk)
-add_pch(win32knt_apitest win32nt.h SOURCE)
+add_pch(win32knt_apitest win32nt.h)
 add_rostests_file(TARGET win32knt_apitest)

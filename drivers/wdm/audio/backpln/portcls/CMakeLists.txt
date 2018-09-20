@@ -61,6 +61,6 @@ endif()
 
 target_link_libraries(portcls libcntpr ${PSEH_LIB})
 set_module_type(portcls kernelmodedriver ENTRYPOINT 0 )
-add_pch(portcls private.hpp SOURCE)
+add_pch(portcls private.hpp)
 add_importlibs(portcls ntoskrnl ks drmk hal)
 add_cd_file(TARGET portcls DESTINATION reactos/system32/drivers FOR all)

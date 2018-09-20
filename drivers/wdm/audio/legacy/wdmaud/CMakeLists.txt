@@ -16,6 +16,6 @@ list(APPEND SOURCE
 add_library(wdmaud SHARED ${SOURCE} wdmaud.rc)
 set_module_type(wdmaud kernelmodedriver)
 target_link_libraries(wdmaud mmixer libcntpr)
-add_pch(wdmaud wdmaud.h SOURCE)
+add_pch(wdmaud wdmaud.h)
 add_importlibs(wdmaud ntoskrnl ks hal)
 add_cd_file(TARGET wdmaud DESTINATION reactos/system32/drivers FOR all)

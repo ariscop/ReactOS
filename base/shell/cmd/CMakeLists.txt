@@ -70,7 +70,7 @@ list(APPEND SOURCE
 
 add_rc_deps(cmd.rc ${CMAKE_CURRENT_SOURCE_DIR}/res/terminal.ico)
 add_executable(cmd ${SOURCE} cmd.rc)
-add_pch(cmd precomp.h SOURCE)
+add_pch(cmd precomp.h)
 set_module_type(cmd win32cui UNICODE)
 target_link_libraries(cmd wine)
 target_link_libraries(cmd conutils ${PSEH_LIB})

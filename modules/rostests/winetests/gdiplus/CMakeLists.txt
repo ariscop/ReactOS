@@ -24,5 +24,5 @@ add_executable(gdiplus_winetest
 
 set_module_type(gdiplus_winetest win32cui)
 add_importlibs(gdiplus_winetest gdiplus user32 gdi32 ole32 msvcrt kernel32)
-add_pch(gdiplus_winetest precomp.h SOURCE)
+add_pch(gdiplus_winetest precomp.h)
 add_rostests_file(TARGET gdiplus_winetest)

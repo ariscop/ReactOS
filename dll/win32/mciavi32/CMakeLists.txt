@@ -18,5 +18,5 @@ add_library(mciavi32 SHARED
 set_module_type(mciavi32 win32dll)
 target_link_libraries(mciavi32 wine)
 add_importlibs(mciavi32 msvfw32 winmm user32 gdi32 msvcrt kernel32 ntdll)
-add_pch(mciavi32 precomp.h SOURCE)
+add_pch(mciavi32 precomp.h)
 add_cd_file(TARGET mciavi32 DESTINATION reactos/system32 FOR all)

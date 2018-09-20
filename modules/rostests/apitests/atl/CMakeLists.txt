@@ -26,5 +26,5 @@ add_executable(atl_apitest
 target_link_libraries(atl_apitest wine atlnew uuid)
 set_module_type(atl_apitest win32cui)
 add_importlibs(atl_apitest rpcrt4 ole32 oleaut32 msimg32 gdi32 advapi32 user32 msvcrt kernel32 ntdll)
-add_pch(atl_apitest precomp.h SOURCE)
+add_pch(atl_apitest precomp.h)
 add_rostests_file(TARGET atl_apitest)

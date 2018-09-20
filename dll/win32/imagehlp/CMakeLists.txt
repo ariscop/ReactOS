@@ -19,5 +19,5 @@ add_library(imagehlp SHARED
 set_module_type(imagehlp win32dll)
 target_link_libraries(imagehlp wine ${PSEH_LIB})
 add_importlibs(imagehlp dbghelp msvcrt kernel32 ntdll)
-add_pch(imagehlp precomp.h SOURCE)
+add_pch(imagehlp precomp.h)
 add_cd_file(TARGET imagehlp DESTINATION reactos/system32 FOR all)

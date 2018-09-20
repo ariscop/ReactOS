@@ -22,6 +22,6 @@ if(NOT MSVC)
     add_target_compile_flags(shellbars "-Wno-unused-but-set-variable")
 endif()
 
-add_pch(shellbars shellbars.h SOURCE)
+add_pch(shellbars shellbars.h)
 target_link_libraries(shellbars atlnew)
 add_dependencies(shellbars xdk)

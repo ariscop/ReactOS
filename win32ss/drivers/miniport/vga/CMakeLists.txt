@@ -7,6 +7,6 @@ list(APPEND SOURCE
 add_library(vgamp SHARED ${SOURCE} vgamp.rc)
 set_module_type(vgamp kernelmodedriver)
 add_importlibs(vgamp videoprt)
-add_pch(vgamp vgamp.h SOURCE)
+add_pch(vgamp vgamp.h)
 add_cd_file(TARGET vgamp DESTINATION reactos/system32/drivers FOR all)
 add_registry_inf(vga_reg.inf)

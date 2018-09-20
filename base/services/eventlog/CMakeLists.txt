@@ -17,7 +17,7 @@ list(APPEND SOURCE
     ${CMAKE_CURRENT_BINARY_DIR}/eventlogrpc_s.c)
 
 add_executable(eventlog ${SOURCE} eventlog.rc)
-add_pch(eventlog eventlog.h SOURCE)
+add_pch(eventlog eventlog.h)
 
 if(NOT MSVC)
     target_link_libraries(eventlog ${PSEH_LIB})

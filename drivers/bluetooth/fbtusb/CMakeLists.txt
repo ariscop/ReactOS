@@ -18,5 +18,5 @@ endif()
 
 set_module_type(fbtusb kernelmodedriver)
 add_importlibs(fbtusb ntoskrnl hal usbd)
-add_pch(fbtusb precomp.h SOURCE)
+add_pch(fbtusb precomp.h)
 add_cd_file(TARGET fbtusb DESTINATION reactos/system32/drivers FOR all)

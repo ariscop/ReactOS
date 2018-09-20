@@ -28,4 +28,4 @@ if(NOT MSVC)
 endif()
 
 add_dependencies(adns psdk)
-add_pch(adns src/internal.h SOURCE)
+add_pch(adns src/internal.h)

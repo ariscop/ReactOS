@@ -18,5 +18,5 @@ add_library(tapi32 SHARED
 set_module_type(tapi32 win32dll)
 target_link_libraries(tapi32 wine)
 add_importlibs(tapi32 advapi32 msvcrt kernel32 ntdll)
-add_pch(tapi32 precomp.h SOURCE)
+add_pch(tapi32 precomp.h)
 add_cd_file(TARGET tapi32 DESTINATION reactos/system32 FOR all)

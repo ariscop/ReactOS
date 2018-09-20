@@ -12,4 +12,4 @@ list(APPEND SOURCE
 
 add_library(mesa_math STATIC ${SOURCE})
 add_dependencies(mesa_math xdk)
-add_pch(mesa_math precomp.h SOURCE)
+add_pch(mesa_math precomp.h)

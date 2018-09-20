@@ -22,4 +22,4 @@ if(NOT MSVC)
 endif()
 
 add_dependencies(cardlib psdk)
-add_pch(cardlib cardlib.h SOURCE)
+add_pch(cardlib cardlib.h)

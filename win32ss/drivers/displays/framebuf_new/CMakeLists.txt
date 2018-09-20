@@ -14,5 +14,5 @@ add_library(framebuf_new SHARED
 set_module_type(framebuf_new kerneldll ENTRYPOINT DrvEnableDriver 12)
 target_link_libraries(framebuf_new libcntpr)
 add_importlibs(framebuf_new win32k)
-add_pch(framebuf_new driver.h SOURCE)
+add_pch(framebuf_new driver.h)
 add_dependencies(framebuf_new psdk)

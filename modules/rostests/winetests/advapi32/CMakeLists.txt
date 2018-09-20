@@ -23,5 +23,5 @@ endif()
 
 set_module_type(advapi32_winetest win32cui)
 add_importlibs(advapi32_winetest advapi32 ole32 user32 msvcrt kernel32 ntdll)
-add_pch(advapi32_winetest precomp.h SOURCE)
+add_pch(advapi32_winetest precomp.h)
 add_rostests_file(TARGET advapi32_winetest)

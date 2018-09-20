@@ -20,5 +20,5 @@ endif()
 
 set_module_type(wlansvc win32cui UNICODE)
 add_importlibs(wlansvc advapi32 rpcrt4 iphlpapi msvcrt kernel32 ntdll)
-add_pch(wlansvc precomp.h SOURCE)
+add_pch(wlansvc precomp.h)
 add_cd_file(TARGET wlansvc DESTINATION reactos/system32 FOR all)

@@ -18,5 +18,5 @@ add_library(usbhub SHARED
 target_link_libraries(usbhub ${PSEH_LIB})
 set_module_type(usbhub kernelmodedriver)
 add_importlibs(usbhub ntoskrnl hal wmilib usbd)
-add_pch(usbhub usbhub.h SOURCE)
+add_pch(usbhub usbhub.h)
 add_cd_file(TARGET usbhub DESTINATION reactos/system32/drivers NO_CAB FOR all)

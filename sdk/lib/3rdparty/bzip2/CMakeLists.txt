@@ -18,5 +18,5 @@ add_library(bzip2 SHARED
 set_module_type(bzip2 kernelmodedriver)
 add_importlibs(bzip2 ntoskrnl)
 target_link_libraries(bzip2 libcntpr)
-add_pch(bzip2 bzlib_private.h SOURCE)
+add_pch(bzip2 bzlib_private.h)
 set_target_properties(bzip2 PROPERTIES OUTPUT_NAME "unbzip2")

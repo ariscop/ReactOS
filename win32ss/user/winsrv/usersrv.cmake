@@ -11,7 +11,7 @@ list(APPEND USERSRV_SOURCE
 
 add_library(usersrv ${USERSRV_SOURCE})
 add_dependencies(usersrv xdk)
-add_pch(usersrv usersrv/usersrv.h USERSRV_SOURCE)
+add_pch(usersrv usersrv/usersrv.h)
 #add_object_library(usersrv ${USERSRV_SOURCE})
 list(APPEND USERSRV_IMPORT_LIBS basesrv psapi)
 set_module_type(usersrv module UNICODE)

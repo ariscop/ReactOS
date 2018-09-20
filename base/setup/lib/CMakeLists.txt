@@ -12,5 +12,5 @@ list(APPEND SOURCE
     precomp.h)
 
 add_library(setuplib ${SOURCE})
-add_pch(setuplib precomp.h SOURCE)
+add_pch(setuplib precomp.h)
 add_dependencies(setuplib xdk) # psdk

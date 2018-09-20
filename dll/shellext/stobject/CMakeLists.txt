@@ -52,5 +52,5 @@ add_importlibs(stobject
     kernel32
     ntdll)
 
-add_pch(stobject precomp.h SOURCE)
+add_pch(stobject precomp.h)
 add_cd_file(TARGET stobject DESTINATION reactos/system32 FOR all)

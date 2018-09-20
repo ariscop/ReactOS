@@ -15,5 +15,5 @@ add_library(liccpa SHARED
 
 set_module_type(liccpa cpl UNICODE)
 add_importlibs(liccpa advapi32 user32 gdi32 msvcrt kernel32 ntdll)
-add_pch(liccpa liccpa.h SOURCE)
+add_pch(liccpa liccpa.h)
 add_cd_file(TARGET liccpa DESTINATION reactos/system32 FOR all)

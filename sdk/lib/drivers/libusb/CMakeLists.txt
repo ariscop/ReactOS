@@ -18,4 +18,4 @@ list(APPEND SOURCE
 
 add_library(libusb ${SOURCE})
 add_dependencies(libusb bugcodes xdk)
-add_pch(libusb libusb.h SOURCE)
+add_pch(libusb libusb.h)

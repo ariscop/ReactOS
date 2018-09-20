@@ -9,5 +9,5 @@ list(APPEND SOURCE
 add_library(blue SHARED ${SOURCE} blue.rc)
 set_module_type(blue kernelmodedriver)
 add_importlibs(blue ntoskrnl hal)
-add_pch(blue blue.h SOURCE)
+add_pch(blue blue.h)
 add_cd_file(TARGET blue DESTINATION reactos/system32/drivers NO_CAB FOR all)

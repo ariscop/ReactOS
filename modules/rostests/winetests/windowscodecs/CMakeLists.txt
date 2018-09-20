@@ -29,5 +29,5 @@ if(MSVC)
     add_importlibs(windowscodecs_winetest ntdll)
 endif()
 
-add_pch(windowscodecs_winetest precomp.h SOURCE)
+add_pch(windowscodecs_winetest precomp.h)
 add_rostests_file(TARGET windowscodecs_winetest)

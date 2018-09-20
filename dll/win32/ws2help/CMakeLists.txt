@@ -16,5 +16,5 @@ add_library(ws2help SHARED
 
 set_module_type(ws2help win32dll)
 add_importlibs(ws2help advapi32 ws2_32 msvcrt kernel32 ntdll)
-add_pch(ws2help precomp.h SOURCE)
+add_pch(ws2help precomp.h)
 add_cd_file(TARGET ws2help DESTINATION reactos/system32 FOR all)

@@ -37,5 +37,5 @@ if(MSVC)
 endif()
 
 add_dependencies(oleaut32_winetest stdole2 oleaut32_idlheaders)
-add_pch(oleaut32_winetest precomp.h SOURCE)
+add_pch(oleaut32_winetest precomp.h)
 add_rostests_file(TARGET oleaut32_winetest)

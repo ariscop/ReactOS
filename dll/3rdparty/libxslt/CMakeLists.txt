@@ -43,7 +43,7 @@ if(MSVC)
     add_importlibs(libxslt ntdll)
 endif()
 
-add_pch(libxslt precomp.h SOURCE)
+add_pch(libxslt precomp.h)
 add_cd_file(TARGET libxslt DESTINATION reactos/system32 FOR all)
 
 if(USE_CLANG_CL OR (NOT MSVC))

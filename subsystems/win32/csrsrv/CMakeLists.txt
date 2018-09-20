@@ -22,6 +22,6 @@ add_library(csrsrv SHARED
 set_module_type(csrsrv nativedll)
 target_link_libraries(csrsrv ${PSEH_LIB} smlib)
 add_importlibs(csrsrv smdll ntdll)
-add_pch(csrsrv srv.h SOURCE)
+add_pch(csrsrv srv.h)
 add_dependencies(csrsrv psdk bugcodes)
 add_cd_file(TARGET csrsrv DESTINATION reactos/system32 FOR all)

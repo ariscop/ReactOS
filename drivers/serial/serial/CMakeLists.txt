@@ -21,5 +21,5 @@ add_library(serial SHARED
 
 set_module_type(serial kernelmodedriver)
 add_importlibs(serial ntoskrnl hal)
-add_pch(serial serial.h SOURCE)
+add_pch(serial serial.h)
 add_cd_file(TARGET serial DESTINATION reactos/system32/drivers FOR all)

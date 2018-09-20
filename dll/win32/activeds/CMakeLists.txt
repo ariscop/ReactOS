@@ -15,5 +15,5 @@ add_library(activeds SHARED
 set_module_type(activeds win32dll)
 target_link_libraries(activeds wine)
 add_importlibs(activeds msvcrt kernel32 ntdll)
-add_pch(activeds precomp.h SOURCE)
+add_pch(activeds precomp.h)
 add_cd_file(TARGET activeds DESTINATION reactos/system32 FOR all)

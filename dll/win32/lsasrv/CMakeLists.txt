@@ -39,5 +39,5 @@ add_library(lsasrv SHARED
 set_module_type(lsasrv win32dll UNICODE)
 target_link_libraries(lsasrv wine ${PSEH_LIB})
 add_importlibs(lsasrv samsrv rpcrt4 msvcrt kernel32 advapi32 ntdll)
-add_pch(lsasrv lsasrv.h SOURCE)
+add_pch(lsasrv lsasrv.h)
 add_cd_file(TARGET lsasrv DESTINATION reactos/system32 FOR all)

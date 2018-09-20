@@ -10,4 +10,4 @@ list(APPEND SOURCE
 
 add_library(hidparser ${SOURCE})
 add_dependencies(hidparser bugcodes xdk)
-add_pch(hidparser parser.h SOURCE)
+add_pch(hidparser parser.h)

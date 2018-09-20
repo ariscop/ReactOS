@@ -5,5 +5,5 @@ list(APPEND SOURCE
     precomp.h)
 
 add_library(concfg ${SOURCE})
-add_pch(concfg precomp.h SOURCE)
+add_pch(concfg precomp.h)
 add_dependencies(concfg xdk)

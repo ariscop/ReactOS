@@ -45,6 +45,6 @@ add_library(zipfldr SHARED
 set_module_type(zipfldr win32dll UNICODE)
 target_link_libraries(zipfldr minizip zlib atlnew uuid)
 add_importlibs(zipfldr oleaut32 ole32 shlwapi comctl32 shell32 user32 advapi32 msvcrt kernel32 ntdll)
-add_pch(zipfldr precomp.h SOURCE)
+add_pch(zipfldr precomp.h)
 add_cd_file(TARGET zipfldr DESTINATION reactos/system32 FOR all)
 

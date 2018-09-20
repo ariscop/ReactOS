@@ -25,5 +25,5 @@ set_target_properties(console PROPERTIES SUFFIX ".dll")
 
 target_link_libraries(console concfg)
 add_importlibs(console advapi32 user32 gdi32 comctl32 msvcrt kernel32 ntdll)
-add_pch(console console.h SOURCE)
+add_pch(console console.h)
 add_cd_file(TARGET console DESTINATION reactos/system32 FOR all)

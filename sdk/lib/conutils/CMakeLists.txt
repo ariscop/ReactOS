@@ -10,7 +10,7 @@ list(APPEND SOURCE
     )
 
 add_library(conutils ${SOURCE})
-# add_pch(conutils conutils.h SOURCE)
+# add_pch(conutils conutils.h)
 add_dependencies(conutils xdk)
 target_link_libraries(conutils ${PSEH_LIB})
 add_importlibs(conutils msvcrt kernel32)

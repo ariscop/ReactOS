@@ -42,6 +42,6 @@ endif()
 
 target_link_libraries(ntkrnlmp cportlib csq ${PSEH_LIB} cmlib ntlsalib rtl ${ROSSYM_LIB} libcntpr wdmguid ioevent)
 add_importlibs(ntkrnlmp hal kdcom bootvid)
-add_pch(ntkrnlmp ${REACTOS_SOURCE_DIR}/ntoskrnl/include/ntoskrnl.h NTKRNLMP_SOURCE)
+add_pch(ntkrnlmp ${REACTOS_SOURCE_DIR}/ntoskrnl/include/ntoskrnl.h)
 add_dependencies(ntkrnlmp psdk bugcodes asm)
 add_cd_file(TARGET ntkrnlmp DESTINATION reactos/system32 NO_CAB FOR all)

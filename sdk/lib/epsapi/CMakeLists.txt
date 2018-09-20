@@ -6,5 +6,5 @@ list(APPEND SOURCE
     enum/precomp.h)
 
 add_library(epsapi ${SOURCE})
-add_pch(epsapi enum/precomp.h SOURCE)
+add_pch(epsapi enum/precomp.h)
 add_dependencies(epsapi psdk)

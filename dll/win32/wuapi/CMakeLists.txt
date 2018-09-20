@@ -28,5 +28,5 @@ set_module_type(wuapi win32dll)
 target_link_libraries(wuapi uuid wine wuguid)
 add_importlibs(wuapi msvcrt kernel32 ntdll)
 add_dependencies(wuapi stdole2) # wuapi_tlb.tlb needs stdole2.tlb
-add_pch(wuapi precomp.h SOURCE)
+add_pch(wuapi precomp.h)
 add_cd_file(TARGET wuapi DESTINATION reactos/system32 FOR all)

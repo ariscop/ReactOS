@@ -12,5 +12,5 @@ list(APPEND SOURCE
     precomp.h)
 
 add_library(mment4 ${SOURCE})
-add_pch(mment4 precomp.h SOURCE)
+add_pch(mment4 precomp.h)
 add_dependencies(mment4 psdk)

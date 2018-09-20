@@ -37,5 +37,5 @@ add_library(netshell SHARED
 set_module_type(netshell win32dll)
 target_link_libraries(netshell uuid wine)
 add_importlibs(netshell shlwapi shell32 version iphlpapi ole32 gdi32 user32 advapi32 setupapi ws2_32 comctl32 msvcrt kernel32 ntdll)
-add_pch(netshell precomp.h SOURCE)
+add_pch(netshell precomp.h)
 add_cd_file(TARGET netshell DESTINATION reactos/system32 FOR all)

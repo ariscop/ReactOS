@@ -8,5 +8,5 @@ list(APPEND SOURCE
     recyclebin_private.h)
 
 add_library(recyclebin ${SOURCE} guid.c)
-add_pch(recyclebin recyclebin_private.h SOURCE)
+add_pch(recyclebin recyclebin_private.h)
 add_dependencies(recyclebin psdk)

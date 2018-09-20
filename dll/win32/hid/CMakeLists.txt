@@ -13,5 +13,5 @@ add_library(hid SHARED
 
 set_module_type(hid win32dll UNICODE)
 add_importlibs(hid msvcrt kernel32 ntdll)
-add_pch(hid precomp.h SOURCE)
+add_pch(hid precomp.h)
 add_cd_file(TARGET hid DESTINATION reactos/system32 FOR all)

@@ -34,5 +34,5 @@ list(APPEND SOURCE
     precomp.h)
 
 add_library(ip ${SOURCE} ${ip_asm})
-add_pch(ip precomp.h SOURCE)
+add_pch(ip precomp.h)
 add_dependencies(ip asm)

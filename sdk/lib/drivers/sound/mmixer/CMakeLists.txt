@@ -16,5 +16,5 @@ list(APPEND SOURCE
     precomp.h)
 
 add_library(mmixer ${SOURCE})
-add_pch(mmixer precomp.h SOURCE)
+add_pch(mmixer precomp.h)
 add_dependencies(mmixer bugcodes xdk)

@@ -7,5 +7,5 @@ list(APPEND SOURCE
     precomp.h)
 
 add_library(tdilib ${SOURCE})
-add_pch(tdilib precomp.h SOURCE)
+add_pch(tdilib precomp.h)
 add_dependencies(tdilib psdk)

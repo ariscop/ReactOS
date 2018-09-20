@@ -8,5 +8,5 @@ list(APPEND SOURCE
 
 add_library(udmihelp ${SOURCE})
 target_link_libraries(udmihelp dmilib)
-add_pch(udmihelp precomp.h SOURCE)
+add_pch(udmihelp precomp.h)
 add_dependencies(udmihelp psdk)

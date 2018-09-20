@@ -25,5 +25,5 @@ add_library(intl SHARED
 
 set_module_type(intl cpl UNICODE)
 add_importlibs(intl user32 comctl32 advapi32 setupapi shell32 msvcrt kernel32 ntdll)
-add_pch(intl intl.h SOURCE)
+add_pch(intl intl.h)
 add_cd_file(TARGET intl DESTINATION reactos/system32 FOR all)

@@ -30,5 +30,5 @@ add_library(samsrv SHARED
 set_module_type(samsrv win32dll UNICODE)
 target_link_libraries(samsrv wine ${PSEH_LIB})
 add_importlibs(samsrv rpcrt4 advapi32 msvcrt kernel32 ntdll)
-add_pch(samsrv samsrv.h SOURCE)
+add_pch(samsrv samsrv.h)
 add_cd_file(TARGET samsrv DESTINATION reactos/system32 FOR all)

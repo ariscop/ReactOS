@@ -16,5 +16,5 @@ add_library(streamci SHARED
 set_module_type(streamci win32dll)
 target_link_libraries(streamci uuid wine)
 add_importlibs(streamci rpcrt4 setupapi advapi32 iphlpapi dhcpcsvc ole32 user32 comctl32 ws2_32 msvcrt kernel32 ntdll)
-add_pch(streamci precomp.h SOURCE)
+add_pch(streamci precomp.h)
 add_cd_file(TARGET streamci DESTINATION reactos/system32 FOR all)

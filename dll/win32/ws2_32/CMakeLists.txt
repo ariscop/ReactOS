@@ -53,5 +53,5 @@ add_library(ws2_32 SHARED
 set_module_type(ws2_32 win32dll)
 target_link_libraries(ws2_32 ${PSEH_LIB})
 add_importlibs(ws2_32 user32 advapi32 ws2help msvcrt kernel32 ntdll)
-add_pch(ws2_32 inc/ws2_32.h SOURCE)
+add_pch(ws2_32 inc/ws2_32.h)
 add_cd_file(TARGET ws2_32 DESTINATION reactos/system32 FOR all)

@@ -19,5 +19,5 @@ set_module_type(lpk win32dll UNICODE)
 target_link_libraries(lpk wine)
 
 add_importlibs(lpk usp10 user32 gdi32 msvcrt kernel32 ntdll)
-add_pch(lpk ros_lpk.h SOURCE)
+add_pch(lpk ros_lpk.h)
 add_cd_file(TARGET lpk DESTINATION reactos/system32 FOR all)

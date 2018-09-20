@@ -24,5 +24,5 @@ list(APPEND SOURCE
     precomp.h)
 
 add_library(strmbase ${SOURCE})
-add_pch(strmbase precomp.h SOURCE)
+add_pch(strmbase precomp.h)
 add_dependencies(strmbase psdk dxsdk)

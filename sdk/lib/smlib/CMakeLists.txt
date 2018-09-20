@@ -10,5 +10,5 @@ list(APPEND SOURCE
     precomp.h)
 
 add_library(smlib ${SOURCE})
-add_pch(smlib precomp.h SOURCE)
+add_pch(smlib precomp.h)
 add_dependencies(smlib psdk)

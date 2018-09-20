@@ -28,5 +28,5 @@ if(MSVC)
     add_importlibs(msxml3_winetest ntdll)
 endif()
 
-add_pch(msxml3_winetest precomp.h SOURCE)
+add_pch(msxml3_winetest precomp.h)
 add_rostests_file(TARGET msxml3_winetest)

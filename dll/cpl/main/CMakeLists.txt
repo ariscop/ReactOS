@@ -18,5 +18,5 @@ add_library(main SHARED
 set_module_type(main cpl UNICODE)
 target_link_libraries(main uuid)
 add_importlibs(main advapi32 user32 comctl32 devmgr comdlg32 shell32 gdi32 msvcrt kernel32)
-add_pch(main main.h SOURCE)
+add_pch(main main.h)
 add_cd_file(TARGET main DESTINATION reactos/system32 FOR all)

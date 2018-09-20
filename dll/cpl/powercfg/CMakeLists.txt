@@ -19,5 +19,5 @@ add_library(powercfg SHARED
 
 set_module_type(powercfg cpl UNICODE)
 add_importlibs(powercfg shlwapi user32 powrprof comctl32 shell32 advapi32 msvcrt kernel32 ntdll)
-add_pch(powercfg powercfg.h SOURCE)
+add_pch(powercfg powercfg.h)
 add_cd_file(TARGET powercfg DESTINATION reactos/system32 FOR all)

@@ -16,7 +16,7 @@ add_library(storport SHARED
     storport.rc
     ${CMAKE_CURRENT_BINARY_DIR}/storport.def)
 
-add_pch(storport precomp.h SOURCE)
+add_pch(storport precomp.h)
 set_module_type(storport kernelmodedriver)
 add_importlibs(storport ntoskrnl hal)
 add_cd_file(TARGET storport DESTINATION reactos/system32/drivers NO_CAB FOR all)

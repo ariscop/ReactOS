@@ -8,4 +8,4 @@ list(APPEND SOURCE
 
 add_library(libsamplerate ${SOURCE})
 add_dependencies(libsamplerate psdk)
-add_pch(libsamplerate precomp.h SOURCE)
+add_pch(libsamplerate precomp.h)

@@ -43,5 +43,5 @@ add_library(actxprxy SHARED
 set_module_type(actxprxy win32dll)
 target_link_libraries(actxprxy uuid wine ${PSEH_LIB})
 add_importlibs(actxprxy rpcrt4 ole32 oleaut32 msvcrt kernel32 ntdll)
-add_pch(actxprxy precomp.h SOURCE)
+add_pch(actxprxy precomp.h)
 add_cd_file(TARGET actxprxy DESTINATION reactos/system32 FOR all)

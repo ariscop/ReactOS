@@ -22,6 +22,6 @@ add_library(itss SHARED
 set_module_type(itss win32dll)
 target_link_libraries(itss uuid wine)
 add_importlibs(itss urlmon shlwapi ole32 msvcrt kernel32 ntdll)
-add_pch(itss precomp.h SOURCE)
+add_pch(itss precomp.h)
 add_dependencies(itss wineheaders)
 add_cd_file(TARGET itss DESTINATION reactos/system32 FOR all)

@@ -35,5 +35,5 @@ if(MSVC)
     add_importlibs(msvcrt_winetest ntdll)
 endif()
 
-add_pch(msvcrt_winetest precomp.h SOURCE)
+add_pch(msvcrt_winetest precomp.h)
 add_rostests_file(TARGET msvcrt_winetest)

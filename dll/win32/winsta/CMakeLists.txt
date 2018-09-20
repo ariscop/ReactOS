@@ -21,5 +21,5 @@ add_library(winsta SHARED
 set_module_type(winsta win32dll)
 target_link_libraries(winsta wine)
 add_importlibs(winsta msvcrt kernel32 ntdll)
-add_pch(winsta winsta.h SOURCE)
+add_pch(winsta winsta.h)
 add_cd_file(TARGET winsta DESTINATION reactos/system32 FOR all)

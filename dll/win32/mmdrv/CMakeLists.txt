@@ -17,5 +17,5 @@ add_library(mmdrv SHARED
 
 set_module_type(mmdrv win32dll UNICODE)
 add_importlibs(mmdrv winmm user32 msvcrt kernel32 ntdll)
-add_pch(mmdrv mmdrv.h SOURCE)
+add_pch(mmdrv mmdrv.h)
 add_cd_file(TARGET mmdrv DESTINATION reactos/system32 FOR all)

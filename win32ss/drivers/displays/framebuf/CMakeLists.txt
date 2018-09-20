@@ -12,7 +12,7 @@ add_library(framebuf SHARED
     framebuf.rc)
 
 set_module_type(framebuf kerneldll ENTRYPOINT DrvEnableDriver 12)
-add_pch(framebuf framebuf.h SOURCE)
+add_pch(framebuf framebuf.h)
 target_link_libraries(framebuf libcntpr)
 add_importlibs(framebuf win32k)
 add_dependencies(framebuf psdk)

@@ -26,6 +26,6 @@ set_subsystem(basesrv console)
 
 target_link_libraries(basesrv ${PSEH_LIB})
 add_importlibs(basesrv csrsrv ntdll)
-add_pch(basesrv basesrv.h SOURCE)
+add_pch(basesrv basesrv.h)
 add_dependencies(basesrv bugcodes xdk)
 add_cd_file(TARGET basesrv DESTINATION reactos/system32 FOR all)

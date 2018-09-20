@@ -60,7 +60,7 @@ list(APPEND SOURCE
 
 add_library(lwip ${SOURCE})
 add_dependencies(lwip bugcodes xdk)
-add_pch(lwip precomp.h SOURCE)
+add_pch(lwip precomp.h)
 
 if(NOT MSVC)
     if(LTCG)

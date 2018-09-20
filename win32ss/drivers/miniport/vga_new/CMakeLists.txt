@@ -14,5 +14,5 @@ add_library(vga SHARED
 target_link_libraries(vga libcntpr)
 set_module_type(vga kernelmodedriver)
 add_importlibs(vga videoprt)
-add_pch(vga vga.h SOURCE)
+add_pch(vga vga.h)
 add_cd_file(TARGET vga DESTINATION reactos/system32/drivers FOR all)

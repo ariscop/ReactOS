@@ -17,5 +17,5 @@ add_library(aclui SHARED
 
 set_module_type(aclui win32dll UNICODE)
 add_importlibs(aclui user32 gdi32 comctl32 ole32 oleaut32 advapi32 uxtheme msvcrt kernel32 ntdll)
-add_pch(aclui precomp.h SOURCE)
+add_pch(aclui precomp.h)
 add_cd_file(TARGET aclui DESTINATION reactos/system32 FOR all)

@@ -30,5 +30,5 @@ add_library(videoprt SHARED
 
 set_module_type(videoprt kernelmodedriver)
 add_importlibs(videoprt ntoskrnl hal)
-add_pch(videoprt videoprt.h SOURCE)
+add_pch(videoprt videoprt.h)
 add_cd_file(TARGET videoprt DESTINATION reactos/system32/drivers FOR all)

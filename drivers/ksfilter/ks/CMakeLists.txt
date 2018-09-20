@@ -43,7 +43,7 @@ add_library(ks SHARED
 set_module_type(ks kernelmodedriver ENTRYPOINT 0)
 
 target_link_libraries(ks ${PSEH_LIB})
-add_pch(ks precomp.h SOURCE)
+add_pch(ks precomp.h)
 add_importlibs(ks ntoskrnl hal)
 add_dependencies(ks psdk)
 add_cd_file(TARGET ks DESTINATION reactos/system32/drivers FOR all)

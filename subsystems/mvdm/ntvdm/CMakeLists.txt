@@ -73,7 +73,7 @@ add_executable(ntvdm
     ntvdm.rc
     ${CMAKE_CURRENT_BINARY_DIR}/ntvdm.def)
 
-add_pch(ntvdm ntvdm.h SOURCE)
+add_pch(ntvdm ntvdm.h)
 set_module_type(ntvdm win32cui UNICODE IMAGEBASE 0x0F000000)
 target_link_libraries(ntvdm fast486 ${PSEH_LIB})
 add_importlibs(ntvdm user32 gdi32 advapi32 comdlg32 msvcrt kernel32 ntdll)

@@ -15,5 +15,5 @@ add_library(wined3dcfg SHARED
 
 set_module_type(wined3dcfg cpl UNICODE)
 add_importlibs(wined3dcfg user32 comctl32 advapi32 msvcrt kernel32)
-add_pch(wined3dcfg wined3dcfg.h SOURCE)
+add_pch(wined3dcfg wined3dcfg.h)
 add_cd_file(TARGET wined3dcfg DESTINATION reactos/system32 FOR all)

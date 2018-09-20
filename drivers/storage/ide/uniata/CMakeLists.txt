@@ -31,7 +31,7 @@ if(USE_CLANG_CL OR (NOT MSVC))
     endif()
 endif()
 
-add_pch(uniata stdafx.h SOURCE)
+add_pch(uniata stdafx.h)
 set_module_type(uniata kernelmodedriver)
 add_importlibs(uniata scsiport ntoskrnl hal)
 add_cd_file(TARGET uniata DESTINATION reactos/system32/drivers NO_CAB FOR all)

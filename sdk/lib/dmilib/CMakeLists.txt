@@ -4,5 +4,5 @@ list(APPEND SOURCE
     precomp.h)
 
 add_library(dmilib ${SOURCE})
-add_pch(dmilib precomp.h SOURCE)
+add_pch(dmilib precomp.h)
 add_dependencies(dmilib psdk)

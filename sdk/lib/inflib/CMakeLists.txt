@@ -12,7 +12,7 @@ if(CMAKE_CROSSCOMPILING)
         inflib.h)
 
     add_library(inflib ${SOURCE})
-    add_pch(inflib inflib.h SOURCE)
+    add_pch(inflib inflib.h)
     add_dependencies(inflib psdk)
 else()
     list(APPEND SOURCE

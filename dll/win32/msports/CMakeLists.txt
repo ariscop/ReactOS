@@ -18,5 +18,5 @@ add_library(msports SHARED
 set_module_type(msports win32dll UNICODE)
 target_link_libraries(msports wine)
 add_importlibs(msports setupapi comctl32 user32 advapi32 msvcrt kernel32 ntdll)
-add_pch(msports precomp.h SOURCE)
+add_pch(msports precomp.h)
 add_cd_file(TARGET msports DESTINATION reactos/system32 FOR all)

@@ -14,5 +14,5 @@ add_library(condrv SHARED
 set_module_type(condrv kernelmodedriver)
 target_link_libraries(condrv ${PSEH_LIB})
 add_importlibs(condrv ntoskrnl hal)
-add_pch(condrv condrv.h SOURCE)
+add_pch(condrv condrv.h)
 add_cd_file(TARGET condrv DESTINATION reactos/system32/drivers NO_CAB FOR all)
