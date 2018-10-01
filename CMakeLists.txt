@@ -266,7 +266,6 @@ else()
     add_subdirectory(modules)
     add_subdirectory(ntoskrnl)
     add_subdirectory(subsystems)
-    add_subdirectory(sdk/tools/wpp)
     add_subdirectory(win32ss)
 
     # Create the registry hives

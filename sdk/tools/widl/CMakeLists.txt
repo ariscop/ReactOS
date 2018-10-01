@@ -34,4 +34,4 @@ list(APPEND SOURCE
 # Taken from widl.rbuild
 add_definitions(-DINT16=SHORT)
 add_host_tool(widl ${SOURCE})
-target_link_libraries(widl wpphost)
+target_link_libraries(widl wpp)

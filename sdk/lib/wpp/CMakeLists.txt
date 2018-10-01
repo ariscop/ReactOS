@@ -31,8 +31,4 @@ list(APPEND SOURCE
     ppl.yy.c
     ppy.tab.c)
 
-if(CMAKE_CROSSCOMPILING)
-    add_library(wpp ${SOURCE})
-else()
-    add_library(wpphost ${SOURCE})
-endif()
+add_library(wpp ${SOURCE})

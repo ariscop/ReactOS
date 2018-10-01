@@ -31,7 +31,6 @@ add_subdirectory(mkhive)
 add_subdirectory(mkisofs)
 add_subdirectory(unicode)
 add_subdirectory(widl)
-add_subdirectory(wpp)
 add_subdirectory(xml2sdb)
 
 if(NOT MSVC)

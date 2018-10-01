@@ -1,6 +1,7 @@
 
 add_subdirectory(cmlib)
 add_subdirectory(inflib)
+add_subdirectory(wpp)
 
 if(CMAKE_CROSSCOMPILING)
 
