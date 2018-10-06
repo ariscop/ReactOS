@@ -1,0 +1,7 @@
+add_subdirectory(ndk/tests)
+add_subdirectory(xdk)
+add_subdirectory(psdk)
+add_subdirectory(dxsdk)
+add_subdirectory(reactos/wine)
+add_subdirectory(reactos/mc)
+add_subdirectory(asm)

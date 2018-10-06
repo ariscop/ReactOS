@@ -242,13 +242,7 @@ else()
 
     add_dependency_header()
 
-    add_subdirectory(sdk/include/ndk/tests)
-    add_subdirectory(sdk/include/xdk)
-    add_subdirectory(sdk/include/psdk)
-    add_subdirectory(sdk/include/dxsdk)
-    add_subdirectory(sdk/include/reactos/wine)
-    add_subdirectory(sdk/include/reactos/mc)
-    add_subdirectory(sdk/include/asm)
+    add_subdirectory(sdk/include)
 
     if(NO_ROSSYM)
         include(sdk/cmake/baseaddress_dwarf.cmake)
