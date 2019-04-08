@@ -1,6 +1,6 @@
 
-cmake_minimum_required(VERSION 3.2.1)
-cmake_policy(VERSION 3.2.1)
+cmake_minimum_required(VERSION 3.8.2)
+cmake_policy(VERSION 3.8.2)
 
 if(NOT CMAKE_VERSION MATCHES "ReactOS")
     message(WARNING "Building with \"${CMAKE_COMMAND}\", which is not the custom CMake included in RosBE, might cause build issues...")
@@ -156,7 +156,7 @@ else()
         add_definitions(-D_WINKD_=1)
     endif()
 
-    if(CMAKE_VERSION MATCHES "ReactOS")
+    if(CMAKE_VERSION MATCHES "ReactOS" AND MSVC)
         set(PCH 1 CACHE BOOL "Whether to use precompiled headers")
     else()
         set(PCH 0 CACHE BOOL "Whether to use precompiled headers")
