@@ -1,7 +1,7 @@
 
 file(GLOB xdk_headers "*.h")
 
-function(add_xdk_header _template _out)
+macro(add_xdk_header _template _out)
     get_filename_component(_out_filename ${_out} NAME)
     set(_temp_file ${CMAKE_CURRENT_BINARY_DIR}/${_out_filename})
     add_custom_command(
@@ -14,8 +14,8 @@ function(add_xdk_header _template _out)
             COMMAND native-hpp ${_template} ${_temp_file}
             DEPENDS ${_template} ${xdk_headers} native-hpp
             WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
-    set(xdk_files "${xdk_files};${REACTOS_BINARY_DIR}/${_out}" PARENT_SCOPE)
-endfunction()
+    list(APPEND xdk_files "${REACTOS_BINARY_DIR}/${_out}")
+endmacro()
 
 add_xdk_header(wdm.template.h sdk/include/ddk/wdm.h)
 add_xdk_header(ntddk.template.h sdk/include/ddk/ntddk.h)
