@@ -32,6 +32,7 @@ list(APPEND SOURCE
     vartype.c
     precomp.h)
 
+set(oleaut32_asm)
 if(MSVC)
     add_asm_files(oleaut32_asm msvc.S)
 endif()

@@ -42,6 +42,7 @@ list(APPEND SOURCE
     precomp.h
     ${CMAKE_CURRENT_BINARY_DIR}/epm_c.c)
 
+set(rpcrt4_asm)
 if(MSVC AND NOT ARCH STREQUAL "arm")
     add_asm_files(rpcrt4_asm msvc.S)
 endif()

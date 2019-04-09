@@ -30,6 +30,7 @@ list(APPEND SOURCE
     swenum.c
     precomp.h)
 
+set(ks_asm)
 if(MSVC)
     add_asm_files(ks_asm msvc.S)
 endif()

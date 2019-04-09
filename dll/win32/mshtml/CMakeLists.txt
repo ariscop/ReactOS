@@ -85,6 +85,7 @@ list(APPEND SOURCE
     xmlhttprequest.c
     mshtml_private.h)
 
+set(mshtml_asm)
 if(MSVC)
     add_asm_files(mshtml_asm msvc.S)
 endif()

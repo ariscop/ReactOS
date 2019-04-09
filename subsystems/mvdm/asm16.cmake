@@ -25,6 +25,7 @@ function(add_asm16_bin _target _binary_file _base_address)
 
         # unset(_source_file_defines)
 
+        set(_source_file_defines)
         foreach(_define ${_defines_semicolon_list})
             if(NOT ${_define} STREQUAL "NOTFOUND")
                 list(APPEND _source_file_defines -D${_define})
