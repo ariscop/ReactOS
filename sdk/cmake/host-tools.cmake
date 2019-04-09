@@ -1,4 +1,5 @@
 
+set(native_suffix "")
 if(CMAKE_HOST_WIN32)
     set(native_suffix ".exe")
 endif()
@@ -23,6 +24,7 @@ foreach(_host_tool ${host_tools_list})
     add_dependencies(native-${_host_tool} host-tools)
 endforeach()
 
+set(USE_CLANG_CL_ARG)
 if(USE_CLANG_CL)
     # FIXME: Fix host tools build with clang
     #set(USE_CLANG_CL_ARG "-DCMAKE_C_COMPILER=clang-cl;-DCMAKE_CXX_COMPILER=clang-cl")

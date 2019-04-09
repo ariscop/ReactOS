@@ -97,7 +97,11 @@ function(add_compile_flags _flags)
     # Adds the compiler flag for all code files: C, C++, and assembly
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${_flags}" PARENT_SCOPE)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${_flags}" PARENT_SCOPE)
-    set(CMAKE_ASM_FLAGS "${CMAKE_ASM_FLAGS} ${_flags}" PARENT_SCOPE)
+    if(NOT DEFINED CMAKE_ASM_FLAGS)
+        set(CMAKE_ASM_FLAGS "${_flags}" PARENT_SCOPE)
+    else()
+        set(CMAKE_ASM_FLAGS "${CMAKE_ASM_FLAGS} ${_flags}" PARENT_SCOPE)
+    endif()
 endfunction()
 
 function(add_compile_flags_language _flags _lang)
