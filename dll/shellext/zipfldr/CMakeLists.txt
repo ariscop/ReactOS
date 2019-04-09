@@ -39,7 +39,6 @@ list(APPEND SOURCE
 
 add_library(zipfldr MODULE
     ${SOURCE}
-    ${ZLIB_SOURCE}
     zipfldr.rc
     ${CMAKE_CURRENT_BINARY_DIR}/zipfldr.def)
 
