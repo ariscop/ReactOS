@@ -14,9 +14,8 @@ function(add_asm16_bin _target _binary_file _base_address)
 
     # unset(_source_file_list)
 
-    get_defines(_directory_defines)
-    get_includes(_directory_includes)
-    get_directory_property(_defines COMPILE_DEFINITIONS)
+    get_defines_expr(${_target} _defines)
+    get_includes_expr(${_target} _includes)
 
     # Build a list of all the defines needed.
     foreach(_source_file ${ARGN})
@@ -46,8 +45,9 @@ function(add_asm16_bin _target _binary_file _base_address)
     ##
     add_custom_command(
         OUTPUT ${_object_file}
-        COMMAND ${CMAKE_ASM_COMPILER} -x assembler-with-cpp -o ${_object_file} -I${REACTOS_SOURCE_DIR}/sdk/include/asm -I${REACTOS_BINARY_DIR}/sdk/include/asm ${_directory_includes} ${_source_file_defines} ${_directory_defines} -D__ASM__ -c ${_concatenated_asm_file}
-        DEPENDS ${_concatenated_asm_file})
+        COMMAND ${CMAKE_ASM_COMPILER} -x assembler-with-cpp -o ${_object_file} -I${REACTOS_SOURCE_DIR}/sdk/include/asm -I${REACTOS_BINARY_DIR}/sdk/include/asm "${_includes}" "${_defines}" -D__ASM__ -c ${_concatenated_asm_file}
+        DEPENDS ${_concatenated_asm_file}
+        COMMAND_EXPAND_LISTS VERBATIM)
 
     add_custom_command(
         OUTPUT ${_binary_file}

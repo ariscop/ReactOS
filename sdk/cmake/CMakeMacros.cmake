@@ -766,6 +766,7 @@ function(preprocess_file __in __out)
 endfunction()
 
 function(get_includes OUTPUT_VAR)
+    #message(DEPRECATION "Use _expr variant instead")
     get_directory_property(_includes INCLUDE_DIRECTORIES)
     foreach(arg ${_includes})
         list(APPEND __tmp_var -I${arg})
@@ -774,12 +775,24 @@ function(get_includes OUTPUT_VAR)
 endfunction()
 
 function(get_defines OUTPUT_VAR)
+    #message(DEPRECATION "Use _expr variant instead")
     get_directory_property(_defines COMPILE_DEFINITIONS)
     foreach(arg ${_defines})
         list(APPEND __tmp_var -D${arg})
     endforeach()
     set(${OUTPUT_VAR} ${__tmp_var} PARENT_SCOPE)
 endfunction()
+
+function(get_includes_expr TARGET OUTPUT_VAR)
+    set(_prop "$<TARGET_PROPERTY:${TARGET},INCLUDE_DIRECTORIES>")
+    set(${OUTPUT_VAR} "$<$<BOOL:${_prop}>:-I$<JOIN:${_prop},;-I>>" PARENT_SCOPE)
+endfunction()
+
+function(get_defines_expr TARGET OUTPUT_VAR)
+    set(_prop "$<TARGET_PROPERTY:${TARGET},COMPILE_DEFINITIONS>")
+    set(${OUTPUT_VAR} "$<$<BOOL:${_prop}>:-D$<JOIN:${_prop},;-D>>" PARENT_SCOPE)
+endfunction()
+
 
 if(NOT MSVC)
     function(add_object_library _target)

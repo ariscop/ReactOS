@@ -25,15 +25,16 @@ function(add_typelib)
 endfunction()
 
 function(add_idl_headers TARGET)
-    get_includes(INCLUDES)
-    get_defines(DEFINES)
+    get_includes_expr(${TARGET} INCLUDES)
+    get_defines_expr(${TARGET} DEFINES)
     foreach(FILE ${ARGN})
         get_filename_component(NAME ${FILE} NAME_WE)
         set(HEADER ${CMAKE_CURRENT_BINARY_DIR}/${NAME}.h)
         add_custom_command(
             OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/${NAME}.h
-            COMMAND native-widl ${INCLUDES} ${DEFINES} ${IDL_FLAGS} -h -o ${CMAKE_CURRENT_BINARY_DIR}/${NAME}.h ${CMAKE_CURRENT_SOURCE_DIR}/${FILE}
-            DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/${FILE} native-widl)
+            COMMAND native-widl "${INCLUDES}" "${DEFINES}" ${IDL_FLAGS} -h -o ${CMAKE_CURRENT_BINARY_DIR}/${NAME}.h ${CMAKE_CURRENT_SOURCE_DIR}/${FILE}
+            DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/${FILE} native-widl
+            COMMAND_EXPAND_LISTS VERBATIM)
         list(APPEND HEADERS ${HEADER})
     endforeach()
     add_custom_target(${TARGET} DEPENDS ${HEADERS})
